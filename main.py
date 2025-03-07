@@ -18,7 +18,7 @@ headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36'
 }
 
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'propertymanager-385720-b6b166d89c3b.json'
+#os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'propertymanager-385720-b6b166d89c3b.json'
 
 # Stworzenie klienta BigQuery
 client = bigquery.Client()
