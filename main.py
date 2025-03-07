@@ -566,7 +566,7 @@ def get_house_data_from_html_and_save(announcement_id, details_page_soup, ds, en
     else:
         print("Errors occurred while inserting house data." + str(errors))
 
-def run(event, context):
+def run(event):
     global ds
     data_supplier = event['attributes'].get('data_supplier')
     data_type = event['attributes'].get('data_type')
