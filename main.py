@@ -568,6 +568,7 @@ def get_house_data_from_html_and_save(announcement_id, details_page_soup, ds, en
 
 def run(event):
     global ds
+    logger.info(f'EVENT is: ' + str(event))
     data_supplier = event['attributes'].get('data_supplier')
     data_type = event['attributes'].get('data_type')
     action = event['attributes'].get('action')
