@@ -1,0 +1,213 @@
+CREATE TABLE `real_estates.lots_announcements` (
+  announcement_id STRING,
+  lot_type STRING,
+  lot_shape STRING,
+  lot_number STRING,
+  fence STRING,
+  road_access STRING,
+  electricity STRING,
+  gas STRING,
+  water STRING,
+  sewerage STRING,
+  telco STRING,
+  dimensions STRING
+)
+CLUSTER BY announcement_id;
+
+CREATE TABLE `real_estates.flats_announcements` (
+  announcement_id STRING,
+  market_type STRING,
+  condition_of_the_flat STRING,
+  floor INT64,
+  number_of_floors INT64,
+  number_of_rooms INT64,
+  number_of_bedrooms INT64,
+  number_of_bathrooms INT64,
+  type_of_kitchen STRING,
+  toilet_together_with_bathroom BOOLEAN,
+  balcony BOOLEAN,
+  garden BOOLEAN,
+  window_joinery STRING,
+  building_year STRING,
+  building_material STRING,
+  heating STRING,
+  lift BOOLEAN,
+  basement BOOLEAN,
+  garage BOOLEAN,
+  parking BOOLEAN,
+  terrace BOOLEAN,
+  flat_number STRING,
+  investment_name STRING,
+  status STRING
+)
+CLUSTER BY announcement_id;
+
+CREATE TABLE `real_estates.houses_announcements` (
+  announcement_id STRING,
+  market_type STRING,
+  house_type STRING,
+  usable_area FLOAT64,
+  condition_of_the_building STRING,
+  number_of_bedrooms INT64,
+  number_of_bathrooms INT64,
+  type_of_kitchen STRING,
+  toilet_together_with_bathroom BOOLEAN,
+  balcony BOOLEAN,
+  terrace BOOLEAN,
+  roof STRING,
+  window_joinery STRING,
+  lot_area FLOAT64,
+  ownership_form STRING,
+  building_year STRING,
+  building_material STRING,
+  heating STRING,
+  road_access STRING,
+  sewerage STRING,
+  gas STRING,
+  water STRING,
+  electricity STRING,
+  telco STRING,
+  fence STRING,
+  garage BOOLEAN
+)
+CLUSTER BY announcement_id;
+
+CREATE TABLE `real_estates.advertisers` (
+  advertiser_id STRING,
+  type STRING,
+  name STRING,
+  company STRING,
+  email STRING,
+  phone STRING,
+  address STRING
+)
+CLUSTER BY advertiser_id;
+
+
+CREATE TABLE `real_estates.properties_announcements` (
+  announcement_id STRING,
+  announcement_type STRING,
+  url STRING,
+  location STRING,
+  location_type STRING,
+  district STRING,
+  commune STRING,
+  place STRING,
+  place_district STRING,
+  street STRING,
+  property_type STRING,
+  area FLOAT64,
+  price FLOAT64,
+  description STRING,
+  images ARRAY<STRING>,
+  publisher STRING,
+  sq_met_price FLOAT64,
+  status STRING,
+  created_at TIMESTAMP,
+  updated_at TIMESTAMP,
+  source STRING,
+  source_created_at TIMESTAMP,
+  source_updated_at TIMESTAMP,
+  type_of_contract STRING,
+  number_of_views INT64,
+  number_of_raises INT64
+)
+CLUSTER BY announcement_id;
+
+
+CREATE TABLE `real_estates.announcements_advertisers` (
+  announcement_id STRING,
+  advertiser_id STRING
+);
+
+CREATE TABLE `real_estates.properties_announcements_changes` (
+  change_id STRING,
+  announcement_id STRING,
+  field_changed STRING,
+  old_value STRING,
+  new_value STRING,
+  change_timestamp TIMESTAMP,
+  ack BOOLEAN
+)
+CLUSTER BY announcement_id;
+
+CREATE OR REPLACE PROCEDURE `real_estates.log_property_change`(
+  announcement_id STRING,
+  field_changed STRING,
+  old_value STRING,
+  new_value STRING
+)
+BEGIN
+  INSERT INTO `real_estates.properties_announcements_changes` (
+    change_id,
+    announcement_id,
+    field_changed,
+    old_value,
+    new_value,
+    change_timestamp,
+    ack
+  )
+  VALUES (
+    GENERATE_UUID(),
+    announcement_id,
+    field_changed,
+    old_value,
+    new_value,
+    CURRENT_TIMESTAMP(),
+    False
+  );
+END;
+
+CREATE OR REPLACE VIEW `real_estates.price_history` AS
+SELECT
+  announcement_id,
+  price AS new_value,
+  created_at AS change_timestamp
+FROM
+  `real_estates.properties_announcements`
+UNION ALL
+SELECT
+  announcement_id,
+  CAST(new_value AS FLOAT64) AS new_value,
+  change_timestamp
+FROM
+  `real_estates.properties_announcements_changes`
+WHERE
+  field_changed = 'price'
+ORDER BY
+  announcement_id, change_timestamp;
+
+CREATE OR REPLACE TABLE `real_estates.investments` (
+  investment_id STRING,
+  name STRING,
+  city STRING,
+  street STRING,
+  postal_code STRING
+  description STRING,
+  investment_images ARRAY<STRING>,
+  investment_plots ARRAY<STRING>,
+  architect_id STRING,
+  building_permit_id STRING,
+  building_permit_date TIMESTAMP,
+)
+CLUSTER BY investment_id;
+
+CREATE OR REPLACE TABLE `real_estates.developers` (
+  developer_id STRING,
+  developer_name STRING,
+  city STRING,
+  street STRING,
+  postal_code STRING
+)
+CLUSTER BY developer_id;
+
+CREATE OR REPLACE TABLE `real_estates.developers_investments` (
+  developer_id STRING,
+  architect_name STRING
+);
+
+CREATE OR REPLACE TABLE `real_estates.architects` (
+  architect_id STRING,
+  name STRING
+)
+CLUSTER BY architect_id;

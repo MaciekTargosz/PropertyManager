@@ -1,0 +1,41 @@
+INFO:root:M 1/1|0|71.56|w cenie|ogródek: 62.27|balkon:|10400.0|744224.0|sold
+INFO:root:M 1/2|1|99.48|w cenie|ogródek: |balkon:17.10|8200.0|815736.0|sold
+INFO:root:M 2/1|0|71.56|w cenie|ogródek: 43.99|balkon:|10000.0|715600.0|sold
+INFO:root:M 2/2|1|99.48|w cenie|ogródek: |balkon:17.10|8200.0|815736.0|sold
+INFO:root:M 3/1|0|71.56|w cenie|ogródek: 44.43|balkon:|10000.0|715600.0|sold
+INFO:root:M 3/2|1|99.48|w cenie|ogródek: |balkon:17.10|8200.0|815736.0|sold
+INFO:root:M 4/1|0|71.56|w cenie|ogródek: 45.65|balkon:|10000.0|715600.0|sold
+INFO:root:M 4/2|1|99.48|w cenie|ogródek: |balkon:17.10|8200.0|815736.0|sold
+INFO:root:M 5/1|0|71.56|w cenie|ogródek: 48.06|balkon:|10000.0|715600.0|sold
+INFO:root:M 5/2|1|99.48|w cenie|ogródek: |balkon:17.10|8200.0|815736.0|sold
+INFO:root:M 6/1|0|81.6|w cenie|ogródek: 87.25|balkon:|9800.0|799680.0|sold
+INFO:root:M 6/2|1|116.07|w cenie|ogródek: 78.36|balkon:25.69|8500.0|986595.0|sold
+INFO:root:M 1/1|0|71.56|w cenie|ogródek: 62.27|balkon:|10400.0|744224.0|available
+INFO:root:M 1/2|1|99.48|w cenie|ogródek: |balkon:17.10|8200.0|815736.0|available
+INFO:root:M 2/1|0|71.56|w cenie|ogródek: 43.99|balkon:|10000.0|715600.0|available
+INFO:root:M 2/2|1|99.48|w cenie|ogródek: |balkon:17.10|8200.0|815736.0|available
+INFO:root:M 3/1|0|71.56|w cenie|ogródek: 44.43|balkon:|10000.0|715600.0|available
+INFO:root:M 3/2|1|99.48|w cenie|ogródek: |balkon:17.10|8200.0|815736.0|available
+INFO:root:M 4/1|0|71.56|w cenie|ogródek: 45.65|balkon:|10000.0|715600.0|available
+INFO:root:M 4/2|1|99.48|w cenie|ogródek: |balkon:17.10|8200.0|815736.0|available
+INFO:root:M 5/1|0|71.56|w cenie|ogródek: 48.06|balkon:|10000.0|715600.0|available
+INFO:root:M 5/2|1|99.48|w cenie|ogródek: |balkon:17.10|8200.0|815736.0|available
+INFO:root:M 6/1|0|81.6|w cenie|ogródek: 87.25|balkon:|9800.0|799680.0|available
+INFO:root:M 6/2|1|116.07|w cenie|ogródek: 78.36|balkon:25.69|8500.0|986595.0|available
+INFO:__main__:Start Scraping lanowezacisze.pl for flats , Environment: test
+INFO:__main__:Found 12 records
+INFO:__main__:Start Scraping lanowezacisze.pl for flats , Environment: test
+INFO:__main__:Found 12 records
+INFO:__main__:STATUS has changed
+INFO:__main__:Status has changed for d9b1e2fe-67f8-4247-af61-2ce4d5d58590 from sold to available
+INFO:__main__:Start Scraping lanowezacisze.pl for flats , Environment: test
+INFO:__main__:Found 12 records
+INFO:__main__:STATUS has changed
+INFO:__main__:Status has changed for d9b1e2fe-67f8-4247-af61-2ce4d5d58590 from sold to available
+INFO:__main__:Start Scraping lanowezacisze.pl for flats , Environment: test
+INFO:__main__:Found 12 records
+INFO:__main__:STATUS has changed
+INFO:__main__:Status has changed for d9b1e2fe-67f8-4247-af61-2ce4d5d58590 from sold to available
+INFO:__main__:Start Scraping lanowezacisze.pl for flats , Environment: test
+INFO:__main__:Found 12 records
+INFO:__main__:Succesfully completed scraping of 13 records
